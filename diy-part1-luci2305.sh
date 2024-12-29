@@ -14,7 +14,6 @@
 # 移除要替换的包
 
 rm -rf feeds/packages/net/mosdns
-rm -rf feeds/packages/net/msd_lite
 rm -rf feeds/luci/themes/luci-theme-argon
 rm -rf feeds/luci/applications/luci-app-mosdns
 
