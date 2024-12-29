@@ -12,6 +12,7 @@
 
 # Modify default IP
 sed -i 's/192.168.1.1/192.168.81.1/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/192.168.81.1/g' package/base-files/luci2/bin/config_generate
 
 
 # x86 型号只显示 CPU 型号
