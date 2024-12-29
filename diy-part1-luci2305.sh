@@ -23,7 +23,7 @@ rm -rf feeds/luci/applications/luci-app-mosdns
 # sed -i '$a\src-git mosdns https://github.com/sbwml/luci-app-mosdns' ./feeds.conf.default
 
 # onliner
-git clone --depth=1 https://github.com/danchexiaoyang/luci-app-onliner.git package/luci-app-onliner
+git clone https://github.com/danchexiaoyang/luci-app-onliner.git package/luci-app-onliner
 # sed -i '$a\src-git onliner https://github.com/danchexiaoyang/luci-app-onliner' ./feeds.conf.default
 
 # 2-添加 PowerOff 关机插件
