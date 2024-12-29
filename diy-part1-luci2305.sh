@@ -20,10 +20,16 @@ rm -rf feeds/luci/applications/luci-app-mosdns
 
 # MosDNS
 git clone --depth=1 https://github.com/sbwml/luci-app-mosdns package/luci-app-mosdns
-git clone --depth=1 https://github.com/vernesong/OpenClash package/luci-app-openclash
 
+# onliner
+git clone --depth=1 https://github.com/danchexiaoyang/luci-app-onliner package/luci-app-onliner
 
+# 2-添加 PowerOff 关机插件
+git clone https://github.com/WukongMaster/luci-app-poweroff.git package/luci-app-poweroff
 
+# 4-添加 OpenClash 插件
+sed -i '$a\src-git openclash https://github.com/vernesong/OpenClash' ./feeds.conf.default
+# git clone --depth=1 https://github.com/vernesong/OpenClash package/luci-app-openclash
 # Add luci-app-openclash
 # wget -O package/openclash.zip https://codeload.github.com/vernesong/OpenClash/zip/refs/heads/master
 # unzip -d package/openclash package/openclash.zip
