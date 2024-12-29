@@ -11,18 +11,17 @@
 #
 
 # Modify default IP
-sed -i 's/192.168.1.1/192.168.9.1/g' package/base-files/files/bin/config_generate
-sed -i '11s/lan/wan/g' package/base-files/files/etc/board.d/99-default_network
-sed -i '12s/wan/lan/g' package/base-files/files/etc/board.d/99-default_network
+sed -i 's/192.168.1.1/192.168.81.1/g' package/base-files/files/bin/config_generate
 
-# Fix build error caused by CGO
-sed -i 's/CGO_ENABLED=0/CGO_ENABLED=1/' feeds/cdnspeedtest/cdnspeedtest/Makefile
 
-# Update luci-theme-argon
-rm -rf feeds/luci/themes/luci-theme-argon
-git clone https://github.com/jerrykuku/luci-theme-argon.git feeds/luci/themes/luci-theme-argon
-wget -O feeds/luci/themes/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg https://raw.githubusercontent.com/zjjxwhh/OpenWrt-x86_64-firmware/main/assets/black-network-switch-with-cables.jpg
+# x86 型号只显示 CPU 型号
+sed -i 's/${g}.*/${a}${b}${c}${d}${e}${f}${hydrid}/g' package/lean/autocore/files/x86/autocore
 
-# Update luci-app-argon-config
-rm -rf feeds/luci/applications/luci-app-argon-config
-git clone https://github.com/jerrykuku/luci-app-argon-config.git package/lean/luci-app-argon-config
+# 修改本地时间格式
+sed -i 's/os.date()/os.date("%a %Y-%m-%d %H:%M:%S")/g' package/lean/autocore/files/*/index.htm
+
+# 修改版本为编译日期
+date_version=$(date +"%y.%m.%d")
+orig_version=$(cat "package/lean/default-settings/files/zzz-default-settings" | grep DISTRIB_REVISION= | awk -F "'" '{print $2}')
+sed -i "s/${orig_version}/R${date_version} by LERAN/g" package/lean/default-settings/files/zzz-default-settings
+
